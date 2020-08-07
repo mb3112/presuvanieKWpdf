@@ -8,14 +8,18 @@ namespace kopirovanieKWpdf
         static void Main(string[] args)
         {
 
-            //string endfolder = @"Z:\Kvalita\Vyhodnotenia\Wochenubersicht pro Spedition\pro Woche";
-            //string endfolder = @"E:\prac\exportM";
-            string endfolder = @"E:\prac\exportM";
+            string endfolder = @"Z:\Kvalita\Vyhodnotenia\Wochenubersicht pro Spedition\pro Monat";
             string[] cesta = { @"Z:\Kvalita\Vyhodnotenia\Wochenubersicht pro Spedition\pro Woche", @"Z:\Kvalita\Vyhodnotenia\Wochenubersicht pro Spedition\pro Monat" };
-            //string[] cesta = { @"Z:\Kvalita\Vyhodnotenia\Wochenubersicht pro Spedition\pro Woche", @"Z:\Kvalita\Vyhodnotenia\Wochenubersicht pro Spedition\pro Monat" };
-           // Console.WriteLine(cesta[1]);
+            // Console.WriteLine(cesta[1]);
+            string dirPath = @"Z:\Kvalita\Vyhodnotenia\Wochenubersicht pro Spedition\pro Woche";
+            //if (Directory.GetFiles(dirPath, "*.pdf").Length == 0)
+            //{
+            //    cwtext();
+            //    int a = 1;
+            //}
             string[] array1 = Directory.GetFiles(endfolder, "*.pdf");
             //Console.WriteLine("--- Files: ---");
+           // Console.WriteLine(cesta[a]);
 
             foreach (string name in array1)
             {
@@ -26,12 +30,12 @@ namespace kopirovanieKWpdf
                 if (!Directory.Exists(pathString))
                 {
                     //Console.WriteLine(pathString);
-                    Console.WriteLine(Path.GetFileName(name));
-                    Console.WriteLine(Path.Combine(pathString, Path.GetFileName(name)));
-                    ////Directory.CreateDirectory(pathString);
-                    ////File.Move(name, Path.Combine(pathString, Path.GetFileName(name)), true);
+                    // Console.WriteLine(Path.GetFileName(name));
+                    //Console.WriteLine(Path.Combine(pathString, Path.GetFileName(name)));
+                    Directory.CreateDirectory(pathString);
+                    File.Move(name, Path.Combine(pathString, Path.GetFileName(name)), true);
                     //File.WriteAllText(@"C:\martin\prac\export\WriteText.txt", pathString);
-                    cwtext();
+                    //cwtext();
                 }
                 else
                 {
@@ -46,8 +50,7 @@ namespace kopirovanieKWpdf
         {
             Console.WriteLine("--- :HOTOVO!: ---");
         }
-   
-        
+
         
       
     }
